@@ -82,7 +82,6 @@ python anpr_script.py
 2. **Email Notification**: If a match is found, the system sends an email notification to the vehicle owner with the relevant details.
 
 ## Code in Action!
-Input image:
 ![Input image](https://github.com/guyoverclocked/ANPR-Vehicle-Finder/blob/main/Contents/car2.jpg)
 
 Cropped image using openCV:
