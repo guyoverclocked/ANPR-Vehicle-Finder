@@ -3,7 +3,7 @@ Stolen-Vehicle-Detection-ANPR is a proof-of-concept project using OpenCV and Tes
 
 
 <div align="center">
-  <img src="https://github.com/guyoverclocked/ANPR-Vehicle-Finder/blob/main/ANPR.gif" alt="ANPR System in Action">
+  <img src="https://github.com/guyoverclocked/ANPR-Vehicle-Finder/blob/main/Contents/ANPR.gif" alt="ANPR System in Action">
 </div>
 
 ## Features
@@ -57,6 +57,36 @@ python anpr_script.py
   
 4. **Receive notifications**:
 -  Owners will receive an email notification if their vehicle is detected.
+
+### Image Preprocessing
+1. **Resizing**: The input image is resized for better handling and processing.
+2. **Grayscale Conversion**: The resized image is converted to grayscale to simplify the processing, as color information is not needed for edge detection.
+3. **Noise Reduction**: A bilateral filter is applied to the grayscale image to reduce noise while preserving edges, making it easier to detect the contours of the license plate.
+
+### Edge Detection
+1. **Canny Edge Detection**: The smoothed grayscale image undergoes Canny edge detection, which highlights the edges in the image, making it easier to identify potential license plate regions.
+
+### Contour Detection
+1. **Finding Contours**: Contours are detected in the edged image. Contours are simply the curves joining all continuous points along a boundary having the same color or intensity.
+2. **Filtering Contours**: The detected contours are sorted based on their area, and the largest contours are kept for further processing. This helps in isolating the license plate from other objects in the image.
+
+### License Plate Identification
+1. **Approximating Contours**: The algorithm approximates each contour to a polygon. If a contour has four sides, it is considered a potential license plate.
+2. **Cropping the License Plate**: Once a potential license plate is identified, the region is cropped from the original image.
+
+### Optical Character Recognition (OCR)
+1. **Text Extraction**: Tesseract OCR is used to extract text from the cropped license plate image. The extracted text is then cleaned by removing unwanted characters.
+
+### Database Matching and Notification
+1. **Database Matching**: The extracted license plate number is checked against a database of reported stolen vehicles.
+2. **Email Notification**: If a match is found, the system sends an email notification to the vehicle owner with the relevant details.
+
+## Code in Action!
+Input image:
+![Input image](https://github.com/guyoverclocked/ANPR-Vehicle-Finder/blob/main/Contents/car2.jpg)
+
+Cropped image using openCV:
+![Output image](https://github.com/guyoverclocked/ANPR-Vehicle-Finder/blob/main/Contents/1.png)
 
 ## License
 This project is licensed under the MIT License.
