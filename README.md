@@ -22,7 +22,7 @@ Stolen-Vehicle-Detection-ANPR is a proof-of-concept project using OpenCV and Tes
 
 2. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repo/stolen-vehicle-detection.git
+   git clone https://github.com/your-repo/ANPR-Vehicle-Finder.git
    cd stolen-vehicle-detection
    ```
    
